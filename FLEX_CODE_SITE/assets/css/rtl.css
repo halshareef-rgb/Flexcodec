@@ -1,0 +1,37 @@
+/* FLEX CODE — Arabic / RTL overrides.
+   Most direction handling is already done with CSS logical properties in styles.css.
+   This file only covers typography and the few physical-direction exceptions. */
+
+[dir="rtl"] body{
+  font-family:var(--ff-ar);
+  font-size:17.5px;
+  line-height:1.85;
+  letter-spacing:0;
+}
+[dir="rtl"] h1,[dir="rtl"] h2,[dir="rtl"] h3,[dir="rtl"] h4{
+  font-family:var(--ff-ar);
+  letter-spacing:0;
+  line-height:1.35;
+  font-weight:700;
+}
+[dir="rtl"] .h-display{line-height:1.22;font-size:clamp(2.2rem,5.4vw,3.9rem)}
+[dir="rtl"] .eyebrow{letter-spacing:.04em}
+[dir="rtl"] .mono,[dir="rtl"] .card__num,[dir="rtl"] .steps li::before{font-family:var(--ff-mono);direction:ltr}
+[dir="rtl"] .brand{letter-spacing:0}
+[dir="rtl"] .brand__txt small{letter-spacing:.14em;font-family:var(--ff)}
+[dir="rtl"] .lead{line-height:1.9}
+
+/* Latin fragments inside Arabic text stay LTR */
+[dir="rtl"] .ltr{direction:ltr;display:inline-block;unicode-bidi:isolate}
+
+/* Physical-direction exceptions */
+[dir="rtl"] .steps li::before{left:auto;right:0}
+[dir="rtl"] .card::before{transform-origin:right}
+[dir="rtl"] .note{border-radius:var(--r-sm) 0 0 var(--r-sm)}
+[dir="rtl"] .acc summary::after{border-inline-end:0;border-inline-start:2px solid var(--b-500);
+  border-bottom:2px solid var(--b-500);transform:rotate(-45deg)}
+[dir="rtl"] .acc details[open] summary::after{transform:rotate(135deg)}
+[dir="rtl"] .skip{left:auto;right:-9999px;border-radius:0 0 0 10px}
+[dir="rtl"] .skip:focus{right:0}
+[dir="rtl"] .btn svg,[dir="rtl"] .link-arrow svg{transform:scaleX(-1)}
+[dir="rtl"] .btn:hover svg{transform:scaleX(-1) translateX(3px)}
